@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Rock+3D&family=Rubik:wght@300&display=swap');
+/* Set Variables */
+$title-font: 'Cinzel',serif;
+$headers-font:'Kaushan Script', cursive;
+$fonts-headline: "'Cinzel', serif", Arial, Verdana, sans-serif;
+$fonts-body: 'Quicksand',Verdana, Arial, sans-serif;
+$background-color:#89bab2;
+$primary: #bfe6b1;
+$accent1: #a98a6b;
+$accent2: #5e97a9;
+$grey-sidebar: 2px solid black;
+$text-dark: black;
+$text-light: #ffffff;
+
+* {
+    box-sizing: border-box;
+}
+
+/* html {
+    background-color: $background-color;
+    padding: 5%;
+} */
+
+body {
+    font-family: $fonts-body;
+    font-size: 100%;
+    text-align: justify;
+    color: $text-light;
+    background: $primary url(https://wallpaperaccess.com/full/276141.jpg);
+    margin: 0;
+    padding: 1em;
+}
+
+h3 {
+    font-family: $headers-font;
+    font-family: $fonts-headline;
+    font-weight: 700;
+}
+
+// page wrapper
+.page-wrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+
+    /*Grid Template Areas*/
+    grid-template-areas:
+        ". banner ."
+        "main sidebar ."
+}
+
+/*Mobile Page Wrapper*/
+@media only screen and (max-width: 600px) {
+    .page-wrapper {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+
+        /*Grid Template Areas*/
+        grid-template-areas:
+            "banner"
+            "sidebar"
+            "main"       
+    }
+}
+
+/*SET GRID AREAS*/
+//Top Area 1 row 2 column
+.intro {
+    grid-area: banner;
+
+    /*Styles*/
+    padding: 0 3%;
+
+    & h1 {
+        padding: 0;
+        font-family: $title-font;
+        font-size: 32px;
+    }
+
+    & h2 {
+        margin: 0;
+        padding: 0;
+        font-family: $headers-font;
+    }
+
+    & .summary {
+        font-size: smaller;
+    }
+}
+
+//Middle Area 2 row 1 column
+.main {
+    grid-area: main;
+
+    /*Styles*/
+    background-image: linear-gradient(rgba(0, 0, 0, 0.493), #0051806e, rgba(255, 255, 255, 0.295), #00518038, black);
+    padding: 0 3%;
+}
+
+//Middle Area 2 row 2 column
+.sidebar {
+    grid-area: sidebar;
+
+    /*Styles*/
+    background-image: linear-gradient(rgba(0, 0, 0, 0.493), #0051806e, rgba(255, 255, 255, 0.226), #00518038, black);
+    padding: 0 3%;
+}
+
+/* Link Hover Effects*/
+a {
+    color: $primary;
+    position: relative;
+    text-decoration: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border-radius: 4px;
+        background-color: $primary;
+        bottom: 0;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform .3s ease-in-out;
+    }
+    
+    &:hover::before {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+}
+/* Footer  */
+footer {
+    padding: 10px 0;
+    color: $text-light;
+
+    & a {
+        font-size: 12px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+        border: 1px solid $text-light;
+        margin: 0 8px;
+        color: inherit;
+        opacity: 0.75;
+    }
+}
